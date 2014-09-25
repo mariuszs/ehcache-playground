@@ -18,6 +18,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Component
 public class Consumer {
 
+    public static final String MARIUSZ_KEY = "A";
     private final Cache fooCache;
     private AtomicLong counter = new AtomicLong();
 
@@ -49,7 +50,7 @@ public class Consumer {
         try {
 
             String now = dateFormat.format(new Date());
-            String key = "A"+  counter.get();
+            String key = MARIUSZ_KEY +  counter.get();
 
             Cache.ValueWrapper valueWrapper = fooCache.get(key);
             if (valueWrapper != null) {

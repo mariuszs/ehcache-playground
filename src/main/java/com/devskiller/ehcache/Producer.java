@@ -15,6 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Component
 public class Producer {
 
+    public static final String PATRYK_KEY = "B";
     private final Cache fooCache;
     private AtomicLong counter = new AtomicLong();
 
@@ -28,7 +29,7 @@ public class Producer {
     @Scheduled(fixedRate = 500)
     public void reportCurrentTime() {
         String now = dateFormat.format(new Date());
-        String key = "B" + counter.getAndIncrement();
+        String key = PATRYK_KEY + counter.getAndIncrement();
         fooCache.put(key, now);
 
         CacheStatistics cacheStatistics = new CacheStatistics((Ehcache) fooCache.getNativeCache());
