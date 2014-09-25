@@ -7,7 +7,7 @@
 
 	<cacheManagerPeerProviderFactory
 			class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
-			properties="peerDiscovery=manual,rmiUrls=//127.0.0.2:40001/foo"/>
+			properties="peerDiscovery=manual,rmiUrls=//127.0.0.2:40001/foo|//pu-app7.zulu-dev.pl-kra-02.dc4.local:40001/foo|//google.com:40001/foo"/>
 
 	<cacheManagerPeerListenerFactory
 			class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
