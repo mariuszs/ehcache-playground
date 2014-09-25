@@ -49,7 +49,7 @@ public class Consumer {
         try {
 
             String now = dateFormat.format(new Date());
-            long key = counter.get();
+            String key = "A"+  counter.get();
 
             Cache.ValueWrapper valueWrapper = fooCache.get(key);
             if (valueWrapper != null) {

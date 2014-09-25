@@ -28,7 +28,7 @@ public class Producer {
     @Scheduled(fixedRate = 500)
     public void reportCurrentTime() {
         String now = dateFormat.format(new Date());
-        long key = counter.getAndIncrement();
+        String key = "B" + counter.getAndIncrement();
         fooCache.put(key, now);
 
         CacheStatistics cacheStatistics = new CacheStatistics((Ehcache) fooCache.getNativeCache());
