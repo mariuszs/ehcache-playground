@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
-		 updateCheck="false"
-		 maxBytesLocalHeap="10M"
-		 name="fooCache">
+        xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+        updateCheck="false"
+        maxBytesLocalHeap="10M"
+        name="fooCache">
 
-	<cacheManagerPeerProviderFactory
-			class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
-			properties="peerDiscovery=manual,rmiUrls=//172.18.14.207:40001/foo"/>
+    <cacheManagerPeerProviderFactory
+            class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+            properties="peerDiscovery=manual,rmiUrls=//172.18.14.207:40001/foo" />
 
-	<cacheManagerPeerListenerFactory
-			class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
-			properties="hostName=0.0.0.0, port=40001, socketTimeoutMillis=2000"/>
-
-
-	<defaultCache eternal="true"  overflowToDisk="false"/>
-	<cache name="foo"  eternal="true" overflowToDisk="false"/>
+    <cacheManagerPeerListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+            properties="hostName=0.0.0.0, port=40001, socketTimeoutMillis=2000" />
 
 
+    <defaultCache eternal="true" overflowToDisk="false" />
+    <cache name="foo" eternal="true" overflowToDisk="false">
+        <cacheEventListenerFactory
+                class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+                properties="replicateAsynchronously=false, replicatePuts=true, replicateUpdates=true, replicateUpdatesViaCopy=false, replicateRemovals=true " />
+    </cache>
 
 
 </ehcache>
