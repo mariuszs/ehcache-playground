@@ -51,6 +51,7 @@ public class Consumer {
 
             String now = dateFormat.format(new Date());
             String key = MARIUSZ_KEY +  counter.get();
+            System.out.println("Try to read " + key);
 
             Cache.ValueWrapper valueWrapper = fooCache.get(key);
             if (valueWrapper != null) {
